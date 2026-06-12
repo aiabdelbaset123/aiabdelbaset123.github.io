@@ -1,0 +1,65 @@
+# Takamul OmniPro
+
+> Advanced Solar PV Research & Engineering Platform
+> منصة بحثية متكاملة للطاقة الشمسية الكهروضوئية
+
+## Platform
+
+- **Public URL**: https://takamul-mekky.streamlit.app
+- **Author**: Prof. Dr. Abdel-baset Hofny Abdel-baset Mekky
+- **IP Registration**: SAIP Certificate No. 26-12-72164139 (Saudi Authority for Intellectual Property), registered 10/03/2026
+- **Version**: v23.5.1 (latest deployed)
+- **Language**: Arabic (default), English, French, Chinese
+- **License**: Proprietary — all rights reserved
+
+## What Takamul OmniPro Does
+
+Takamul OmniPro is a 16,700-line Streamlit application for solar photovoltaic research, simulation, and investment analysis. It integrates:
+
+- Physical PV modelling (pvlib, real Meteostat weather data)
+- 50+ semiconductor materials database with Shockley-Queisser limits
+- AI-driven synthetic solar cell discovery engine
+- Multi-algorithm ML suite (RF, XGBoost, LightGBM, MLP, SVR, KNN, ensembles)
+- Economic analysis: LCOE, NPV, IRR, payback period, Monte Carlo uncertainty
+- Saudi-specific modules: soiling & dust spectral engine, Saudi investor decision support, Vision 2030 alignment
+- IEC 61853-1/2 and IEC 61724-1 compliance calculations
+- International model comparison: Sandia, PVsyst, SAM
+- Global Solar Atlas and Arabian Shield geology mapping
+- Professional HTML/PDF report generation and Excel/CSV export
+- Scientific tools: DFT input file generator (Quantum ESPRESSO, Gaussian, WIEN2k, SCAPS-1D)
+
+## AI / Machine Access
+
+Structured endpoints for AI agents and automated integrations:
+
+- Manifest (JSON): https://takamul-mekky.streamlit.app/?machine=manifest
+- Metrics (JSON): https://takamul-mekky.streamlit.app/?machine=metrics
+- Companion REST API (run locally): python -m uvicorn api:app --host 0.0.0.0 --port 8000
+
+### API Endpoints
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET | /health | Service status |
+| GET | /manifest | AI-readable platform manifest |
+| GET | /metrics | Visitor and session counters |
+| GET | /materials | Available material keys |
+| POST | /simulate/basic | Quick PV energy & economics estimate |
+
+## Navigation Modules
+
+- Materials & Discovery: Material Explorer, Discovery Engine, Sustainability & Bandgap Prediction
+- Physics & Simulation: Physics & Quantum, Full PV Simulation, Model Comparison, IEC Standards, Validation
+- Site & Environment: Global Atlas, Environmental Factors, Soiling & Dust, Arabian Shield
+- Economics & Investment: Economic Analysis, Saudi Investor, Vision 2030
+- AI & Data Science: Data Science & ML, Advanced Analytics, Scientific Tools
+- Reports & Exports: Professional Reports, Data Export
+
+## Citing This Platform
+
+If you use Takamul OmniPro in research, cite as:
+Mekky, A.-b. H. (2026). *Takamul OmniPro: Advanced Solar PV Research & Engineering Platform* (v23.5.1). Saudi Authority for Intellectual Property, Certificate No. 26-12-72164139. https://takamul-mekky.streamlit.app
+
+## Disclaimer
+
+Outputs are for research and educational decision-support only. They do not constitute certified feasibility, financial, legal, or grid-interconnection advice.

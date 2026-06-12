@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تكامل OmniPro — منصة بحثية متكاملة للطاقة الشمسية الكهروضوئية. محاكاة فيزيائية، تحليل اقتصادي، ذكاء اصطناعي، وأكثر من 50 مادة شبه موصلة." />
+  <meta name="keywords" content="Takamul OmniPro, solar energy, photovoltaic, PV simulation, Saudi Arabia, LCOE, pvlib, مواد شبه موصلة, طاقة شمسية, رؤية 2030" />
+  <meta name="author" content="Prof. Dr. Abdel-baset Hofny Abdel-baset Mekky" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Takamul OmniPro — منصة الطاقة الشمسية" />
+  <meta property="og:description" content="منصة بحثية متكاملة لمحاكاة الطاقة الشمسية وتحليل المواد والاستثمار — مفتوحة مجاناً للباحثين والمهندسين." />
+  <meta property="og:url" content="https://takamul-mekky.github.io" />
+  <meta property="og:type" content="website" />
+
+  <title>Takamul OmniPro ☀️ — منصة الطاقة الشمسية</title>
+
+  <style>
+    :root {
+      --gold: #f5a623;
+      --dark: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --green: #3fb950;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Segoe UI', 'IBM Plex Sans Arabic', Tahoma, sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1c2128 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 20px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,166,35,.12), transparent);
+      pointer-events: none;
+    }
+    .logo { font-size: 3.5rem; display: block; margin-bottom: 10px; }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 18px;
+      background: rgba(245,166,35,.15);
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+
+    /* ── CTA BUTTONS ── */
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn:hover { opacity: .85; transform: translateY(-2px); }
+    .btn-primary { background: var(--gold); color: #000; }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 20px 80px;
+    }
+
+    section { margin-bottom: 60px; }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── FEATURE GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 20px;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .card-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .card h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .card p { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── MODULES TABLE ── */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th {
+      background: var(--card);
+      color: var(--gold);
+      padding: 10px 14px;
+      text-align: right;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border);
+    }
+    td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+    tr:hover td { background: rgba(255,255,255,.02); color: var(--text); }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 30px;
+      text-align: center;
+      min-width: 150px;
+    }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--gold); }
+    .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── API ── */
+    .api-table th { text-align: left; }
+    .api-table td:first-child { color: var(--green); font-family: monospace; }
+    .api-table td:nth-child(2) { color: var(--accent); font-family: monospace; }
+
+    /* ── AUTHOR ── */
+    .author-card {
+      background: var(--card);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 28px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .author-card .info h3 { font-size: 1.1rem; color: var(--gold); margin-bottom: 6px; }
+    .author-card .info p { font-size: 0.88rem; color: var(--muted); margin-bottom: 4px; }
+    .cert {
+      display: inline-block;
+      background: rgba(245,166,35,.1);
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      color: var(--gold);
+      margin-top: 8px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.7rem; }
+      .logo { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header>
+  <span class="logo">☀️</span>
+  <h1>Takamul OmniPro</h1>
+  <p class="subtitle">منصة بحثية متكاملة للطاقة الشمسية الكهروضوئية<br>Advanced Solar PV Research &amp; Engineering Platform</p>
+  <span class="badge">🛡️ ملكية فكرية مسجلة · SAIP 26-12-72164139</span>
+  <div class="cta-row">
+    <a href="https://takamul-mekky.streamlit.app" target="_blank" class="btn btn-primary">🚀 افتح المنصة الآن</a>
+    <a href="https://takamul-mekky.streamlit.app/?machine=manifest" target="_blank" class="btn btn-secondary">🤖 AI Manifest</a>
+  </div>
+</header>
+
+<!-- ══════════════════ MAIN ══════════════════ -->
+<main>
+
+  <!-- STATS -->
+  <section>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">16,700+</div><div class="stat-label">سطر كود</div></div>
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">مادة شبه موصلة</div></div>
+      <div class="stat"><div class="stat-num">20</div><div class="stat-label">وحدة تحليلية</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">لغات واجهة</div></div>
+      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">نماذج ذكاء اصطناعي</div></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">ثيمات بصرية</div></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <h2>⚡ الميزات الرئيسية</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <h3>قاعدة بيانات المواد</h3>
+        <p>أكثر من 50 مادة كهروضوئية مع خصائص Bandgap وحدود Shockley-Queisser ومعاملات الاستقرار والتكلفة.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚛️</div>
+        <h3>محاكاة فيزيائية كاملة</h3>
+        <p>محاكاة pvlib مع بيانات أرصاد Meteostat الحقيقية، نماذج Sandia / PVsyst / SAM جنباً إلى جنب.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>محرك الذكاء الاصطناعي</h3>
+        <p>10+ خوارزميات (RF, XGBoost, LightGBM, MLP, SVR) مع SHAP للتفسير واكتشاف مواد خلايا شمسية جديدة.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <h3>التحليل الاقتصادي</h3>
+        <p>LCOE، NPV، IRR، فترة الاسترداد، مع تحليل حساسية وMonte Carlo وتوافق رؤية 2030.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>البيئة والموقع</h3>
+        <p>أطلس شمسي عالمي، محرك الغبار السعودي الطيفي، خريطة الدرع العربي لموارد التصنيع.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📄</div>
+        <h3>التقارير والتصدير</h3>
+        <p>تقارير HTML/PDF احترافية متكاملة، تصدير Excel/CSV/JSON، مولد ملفات DFT للبحث العلمي.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📐</div>
+        <h3>معايير IEC</h3>
+        <p>IEC 61853-1/2 مصفوفات الطاقة، IEC 61724-1 نسبة الأداء PR وKPIs الكاملة.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>متعدد اللغات والثيمات</h3>
+        <p>واجهة كاملة بالعربية والإنجليزية والفرنسية والصينية مع 8 ثيمات بصرية متخصصة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section>
+    <h2>🗂️ وحدات المنصة</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>الفئة</th><th>الوحدات</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>🔬 المواد والاكتشاف</td><td>Material Explorer · Discovery Engine · Sustainability</td></tr>
+          <tr><td>⚛️ الفيزياء والمحاكاة</td><td>Physics &amp; Quantum · Full Simulation · Model Comparison · IEC Standards · Validation</td></tr>
+          <tr><td>🌍 الموقع والبيئة</td><td>Global Atlas · Environmental Factors · Soiling &amp; Dust · Arabian Shield</td></tr>
+          <tr><td>💰 الاقتصاد والاستثمار</td><td>Economic Analysis · Saudi Investor · Vision 2030</td></tr>
+          <tr><td>📈 الذكاء الاصطناعي</td><td>Data Science &amp; ML · Advanced Analytics · Scientific Tools</td></tr>
+          <tr><td>📄 التقارير والتصدير</td><td>Professional Reports · Data Export</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- API -->
+  <section>
+    <h2>🤖 واجهة API للذكاء الاصطناعي</h2>
+    <p style="color:var(--muted); margin-bottom:20px; font-size:.9rem;">
+      تدعم المنصة التكامل البرمجي المباشر مع أدوات الذكاء الاصطناعي والمواقع الخارجية عبر API مصاحبة أو عبر روابط machine-readable في Streamlit.
+    </p>
+    <div class="table-wrap">
+      <table class="api-table">
+        <thead>
+          <tr><th>Method</th><th>Endpoint</th><th>الوصف</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GET</td><td>/health</td><td>حالة الخدمة</td></tr>
+          <tr><td>GET</td><td>/manifest</td><td>بيانات المنصة للقراءة الآلية</td></tr>
+          <tr><td>GET</td><td>/metrics</td><td>إحصاء الزوار والجلسات</td></tr>
+          <tr><td>GET</td><td>/materials</td><td>قائمة المواد المتاحة</td></tr>
+          <tr><td>POST</td><td>/simulate/basic</td><td>تقدير طاقة PV سريع</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:12px;">
+      <a href="https://takamul-mekky.streamlit.app/?machine=manifest" target="_blank" class="btn btn-secondary" style="font-size:.85rem; padding:8px 18px;">manifest JSON</a>
+      <a href="https://takamul-mekky.streamlit.app/?machine=metrics" target="_blank" class="btn btn-secondary" style="font-size:.85rem; padding:8px 18px;">metrics JSON</a>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <section>
+    <h2>👤 المؤلف والملكية الفكرية</h2>
+    <div class="author-card">
+      <div class="info">
+        <h3>أ.د. عبد الباسط حفني عبد الباسط مكي</h3>
+        <p>Prof. Dr. Abdel-baset Hofny Abdel-baset Mekky</p>
+        <p>منصة تكامل OmniPro · © 2026</p>
+        <span class="cert">🛡️ SAIP · رقم الشهادة: 26-12-72164139</span>
+        <span class="cert" style="margin-right:8px;">📅 مسجلة: 10/03/2026 م · 21/09/1447 هـ</span>
+        <p style="margin-top:12px; font-size:0.82rem;">
+          جميع الخوارزميات العلمية وقواعد البيانات والكود المصدري ملكية فكرية حصرية للمؤلف.
+          أي نسخ أو إعادة توزيع أو استخدام تجاري دون إذن كتابي صريح مخالف للقانون.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section>
+    <h2>⚠️ إخلاء المسؤولية العلمية</h2>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; font-size:.87rem; color:var(--muted);">
+      <p>نماذج التظليل والتتبع أحادي المحور وتخزين البطاريات المضمّنة في هذا الإصدار هي نماذج فرز هندسي مبنية على أسس فيزيائية مناسبة، لكنها تقريبية ومبسّطة ولا تحل محل دراسة PVsyst أو SAM أو IEC 61724 أو المهندس المستقل لقرارات الاستثمار النهائية.</p>
+      <p style="margin-top:10px;">نموذج Bandgap بالتعلم الآلي يستخدم Gaussian Process Regressor مع عدم يقين تنبؤي. المنصة أداة بحث وتعليم ودعم قرار، ومخرجاتها لا تمثل استشارة معتمدة مالية أو قانونية أو هندسية.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <p>
+    ☀️ <strong>Takamul OmniPro</strong> &nbsp;·&nbsp;
+    <a href="https://takamul-mekky.streamlit.app" target="_blank">افتح المنصة</a> &nbsp;·&nbsp;
+    © 2026 Prof. Dr. Abdel-baset H. Mekky &nbsp;·&nbsp; SAIP 26-12-72164139
+  </p>
+  <p style="margin-top:6px;">
+    هذا الموقع صفحة تعريفية فقط · الكود المصدري خاص ومحمي بحقوق الملكية الفكرية
+  </p>
+</footer>
+
+</body>
+</html>
